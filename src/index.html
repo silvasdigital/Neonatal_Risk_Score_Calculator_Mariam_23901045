@@ -3,35 +3,50 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Weather App</title>
-    <link rel="icon" href="imgs/weather-icons/clear-day.svg" />
+    <title>Neonatal Risk Score Calculator</title>
   </head>
   <body>
     <header>
-      <div class="logo-container">
-        <img src="./imgs/logo.svg" alt="logo" />
-        <h1>Weather App</h1>
-      </div>
-      <div class="slider_div">
-        <label for="unit"
-          ><span class="label-txt">Switch Unit</span>
-          <div class="slider-container">
-            <input type="checkbox" id="unit" value="F" />
-            <span class="slider"></span>
-          </div>
-        </label>
-      </div>
+      <h1>Neonatal Risk Score Calculator</h1>
+      <p>Educational V1 (Apgar Score)</p>
+      <p>Made by: Mariam Al-talqani 23901045</p>
     </header>
     <main>
-      <div class="search-bar-container">
-        <input type="search" id="search-bar" placeholder="Search for a location" />
-        <img src="./imgs/search.svg" alt="search" />
+      <section id="status-card" class="card status-normal">
+        <h2>Apgar Score</h2>
+        <div id="apgar-score" class="score-circle">--</div>
+        <p id="status-advice">Load a patient scenario to begin.</p>
+      </section>
+
+      <div class="card-deck">
+        <section id="chart-card" class="card">
+          <h2>Score Visualization</h2>
+          <div class="chart-container">
+            <canvas id="apgarChart"></canvas>
+          </div>
+        </section>
+
+        <section id="criteria-card" class="card">
+          <h2>Apgar Criteria</h2>
+          <ul>
+            <li><strong>Appearance</strong> (Color): <span id="appearance">--</span></li>
+            <li><strong>Pulse</strong> (Heart Rate): <span id="pulse">--</span></li>
+            <li><strong>Grimace</strong> (Reflex): <span id="grimace">--</span></li>
+            <li><strong>Activity</strong> (Muscle Tone): <span id="activity">--</span></li>
+            <li><strong>Respiration</strong> (Effort): <span id="respiration">--</span></li>
+          </ul>
+        </section>
+
+        <section class="card controls">
+          <h2>Simulation Scenarios</h2>
+          <p>Load different newborn profiles to see the calculated Apgar score.</p>
+          <div class="button-group">
+            <button id="btn-vigorous">Load Vigorous Newborn</button>
+            <button id="btn-moderate">Load Moderate Newborn</button>
+            <button id="btn-severe">Load Severe Newborn</button>
+          </div>
+        </section>
       </div>
     </main>
-    <div class="footer">
-      <a href="https://github.com/Silva-Mo/weather-app"
-        >Copyright © Webpage by: Silva-Mo<img src="imgs/github-mark-white.svg"
-      /></a>
-    </div>
   </body>
 </html>
