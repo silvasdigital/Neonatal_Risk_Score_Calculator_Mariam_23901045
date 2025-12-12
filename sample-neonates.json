@@ -1,0 +1,42 @@
+[
+  {
+    "name": "Baby Ahmed",
+    "appearance": 2,
+    "pulse": 2,
+    "grimace": 2,
+    "activity": 2,
+    "respiration": 2
+  },
+  {
+    "name": "Baby Sarah",
+    "appearance": 1,
+    "pulse": 2,
+    "grimace": 1,
+    "activity": 1,
+    "respiration": 2
+  },
+  {
+    "name": "Baby Mohammed",
+    "appearance": 0,
+    "pulse": 1,
+    "grimace": 0,
+    "activity": 1,
+    "respiration": 1
+  },
+  {
+    "name": "Baby Fatima",
+    "appearance": 2,
+    "pulse": 2,
+    "grimace": 1,
+    "activity": 2,
+    "respiration": 2
+  },
+  {
+    "name": "Baby Omar",
+    "appearance": 1,
+    "pulse": 1,
+    "grimace": 1,
+    "activity": 1,
+    "respiration": 1
+  }
+]

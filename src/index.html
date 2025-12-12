@@ -1,52 +1,108 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" dir="ltr">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Neonatal Risk Score Calculator</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
   </head>
   <body>
-    <header>
-      <h1>Neonatal Risk Score Calculator</h1>
-      <p>Educational V1 (Apgar Score)</p>
-      <p>Made by: Mariam Al-talqani 23901045</p>
-    </header>
-    <main>
-      <section id="status-card" class="card status-normal">
-        <h2>Apgar Score</h2>
-        <div id="apgar-score" class="score-circle">--</div>
-        <p id="status-advice">Load a patient scenario to begin.</p>
-      </section>
-
-      <div class="card-deck">
-        <section id="chart-card" class="card">
-          <h2>Score Visualization</h2>
-          <div class="chart-container">
-            <canvas id="apgarChart"></canvas>
-          </div>
-        </section>
-
-        <section id="criteria-card" class="card">
-          <h2>Apgar Criteria</h2>
-          <ul>
-            <li><strong>Appearance</strong> (Color): <span id="appearance">--</span></li>
-            <li><strong>Pulse</strong> (Heart Rate): <span id="pulse">--</span></li>
-            <li><strong>Grimace</strong> (Reflex): <span id="grimace">--</span></li>
-            <li><strong>Activity</strong> (Muscle Tone): <span id="activity">--</span></li>
-            <li><strong>Respiration</strong> (Effort): <span id="respiration">--</span></li>
-          </ul>
-        </section>
-
-        <section class="card controls">
-          <h2>Simulation Scenarios</h2>
-          <p>Load different newborn profiles to see the calculated Apgar score.</p>
-          <div class="button-group">
-            <button id="btn-vigorous">Load Vigorous Newborn</button>
-            <button id="btn-moderate">Load Moderate Newborn</button>
-            <button id="btn-severe">Load Severe Newborn</button>
-          </div>
-        </section>
+    <!-- Login Page -->
+    <div id="login-page" class="login-container">
+      <div class="login-card">
+        <h1 data-i18n="app-title">Neonatal Risk Score Calculator</h1>
+        <p data-i18n="app-subtitle">Educational V1 (Apgar Score)</p>
+        <p data-i18n="made-by">Made by: Mariam Al-talqani 23901045</p>
+        <div class="login-buttons">
+          <button id="btn-google-login" class="login-btn google-btn">
+            <i class="fab fa-google"></i>
+            <span data-i18n="login-google">Sign in with Google</span>
+          </button>
+          <button id="btn-demo-login" class="login-btn demo-btn">
+            <i class="fas fa-user"></i>
+            <span data-i18n="login-demo">Demo Login</span>
+          </button>
+        </div>
       </div>
-    </main>
+    </div>
+
+    <!-- Main App (hidden until logged in) -->
+    <div id="main-app" style="display: none;">
+      <header>
+        <div class="header-content">
+          <div class="header-left">
+            <h1 data-i18n="app-title">Neonatal Risk Score Calculator</h1>
+            <p data-i18n="app-subtitle">Educational V1 (Apgar Score)</p>
+          </div>
+          <div class="header-right">
+            <button id="btn-language-toggle" class="icon-btn" title="Switch Language">
+              <i class="fas fa-language"></i>
+            </button>
+            <div class="user-info">
+              <i class="fas fa-user-circle"></i>
+              <span id="user-name">User</span>
+            </div>
+            <button id="btn-logout" class="icon-btn" title="Logout">
+              <i class="fas fa-sign-out-alt"></i>
+            </button>
+          </div>
+        </div>
+      </header>
+      
+      <main>
+        <section id="status-card" class="card status-normal">
+          <h2 data-i18n="apgar-score-title">Apgar Score</h2>
+          <div id="apgar-score" class="score-circle">--</div>
+          <p id="status-advice" data-i18n="load-patient">Load a patient scenario to begin.</p>
+        </section>
+
+        <div class="card-deck">
+          <section id="chart-card" class="card">
+            <h2 data-i18n="visualization-title">Score Visualization</h2>
+            <div class="chart-container">
+              <canvas id="apgarChart"></canvas>
+            </div>
+          </section>
+
+          <section id="criteria-card" class="card">
+            <h2 data-i18n="criteria-title">Apgar Criteria</h2>
+            <ul>
+              <li><strong data-i18n="appearance">Appearance</strong> (<span data-i18n="color">Color</span>): <span id="appearance">--</span></li>
+              <li><strong data-i18n="pulse">Pulse</strong> (<span data-i18n="heart-rate">Heart Rate</span>): <span id="pulse">--</span></li>
+              <li><strong data-i18n="grimace">Grimace</strong> (<span data-i18n="reflex">Reflex</span>): <span id="grimace">--</span></li>
+              <li><strong data-i18n="activity">Activity</strong> (<span data-i18n="muscle-tone">Muscle Tone</span>): <span id="activity">--</span></li>
+              <li><strong data-i18n="respiration">Respiration</strong> (<span data-i18n="effort">Effort</span>): <span id="respiration">--</span></li>
+            </ul>
+          </section>
+
+          <section class="card controls">
+            <h2 data-i18n="scenarios-title">Simulation Scenarios</h2>
+            
+            <!-- Import Neonates Section -->
+            <div class="import-section">
+              <label for="file-import" class="import-label">
+                <i class="fas fa-file-upload"></i>
+                <span data-i18n="import-neonates">Import Neonates List (JSON/CSV)</span>
+              </label>
+              <input type="file" id="file-import" accept=".json,.csv" style="display: none;" />
+              <div id="imported-list" class="imported-list" style="display: none;">
+                <h3 data-i18n="imported-neonates">Imported Neonates</h3>
+                <select id="neonate-selector" size="5"></select>
+                <button id="btn-load-selected" data-i18n="load-selected">Load Selected</button>
+              </div>
+            </div>
+
+            <div class="divider"></div>
+
+            <p data-i18n="scenarios-description">Load different newborn profiles to see the calculated Apgar score.</p>
+            <div class="button-group">
+              <button id="btn-vigorous" data-i18n="vigorous-newborn">Load Vigorous Newborn</button>
+              <button id="btn-moderate" data-i18n="moderate-newborn">Load Moderate Newborn</button>
+              <button id="btn-severe" data-i18n="severe-newborn">Load Severe Newborn</button>
+            </div>
+          </section>
+        </div>
+      </main>
+    </div>
   </body>
 </html>

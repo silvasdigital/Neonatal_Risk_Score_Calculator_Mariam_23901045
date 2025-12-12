@@ -6,12 +6,45 @@ The application allows users to simulate three different newborn scenarios (vigo
 
 ## ✨ Features
 
-- **Apgar Score Calculation:** Automatically calculates the total Apgar score from 5 key criteria.
-- **Dynamic Status Updates:** The main status card changes color and text (Normal, Watch, Alert) based on the calculated score.
-- **Interactive Scenarios:** Buttons allow users to instantly load different newborn profiles.
-- **Data Visualization:** A **Radar Chart** provides a clear visual breakdown of the 5 Apgar components for each scenario.
-- **Responsive Design:** Built with a mobile-first, flexible layout that works on any device.
-- **Modern Tech Stack:** Built with HTML, CSS, and JavaScript, and bundled with Webpack.
+- **User Authentication:** Login page with Google and demo authentication (for demonstration purposes)
+- **Bilingual Support:** Toggle between English and Arabic languages with full RTL support
+- **User Profile Display:** Shows the logged-in user's name in the header
+- **Import Neonates:** Import lists of neonates from JSON or CSV files for batch assessment
+- **Apgar Score Calculation:** Automatically calculates the total Apgar score from 5 key criteria
+- **Dynamic Status Updates:** The main status card changes color and text (Normal, Watch, Alert) based on the calculated score
+- **Interactive Scenarios:** Buttons allow users to instantly load different newborn profiles
+- **Data Visualization:** A **Radar Chart** provides a clear visual breakdown of the 5 Apgar components for each scenario
+- **Responsive Design:** Built with a mobile-first, flexible layout that works on any device
+- **Modern Tech Stack:** Built with HTML, CSS, and JavaScript, and bundled with Webpack
+
+## 📋 Import File Format
+
+You can import multiple neonates using JSON or CSV format:
+
+**JSON Format (sample-neonates.json):**
+
+```json
+[
+  {
+    "name": "Baby Ahmed",
+    "appearance": 2,
+    "pulse": 2,
+    "grimace": 2,
+    "activity": 2,
+    "respiration": 2
+  }
+]
+```
+
+**CSV Format (sample-neonates.csv):**
+
+```csv
+name,appearance,pulse,grimace,activity,respiration
+Baby Ahmed,2,2,2,2,2
+Baby Sarah,1,2,1,1,2
+```
+
+Each Apgar criterion is scored from 0-2. Sample files are included in the project root.
 
 ## 🚀 Getting Started
 
